@@ -1,18 +1,15 @@
 import React from 'react';
 import { FooterBase } from './styles';
+import LogoFoox from '../../assets/img/avatar.png';
 
 function Footer() {
   return (
     <FooterBase>
       <a href="https://www.fooxit.com.br/">
-        <img src="https://www.alura.com.br/assets/img/alura-logo-white.1570550707.svg" alt="Logo Alura" />
+        <img src={LogoFoox} alt="Logo FooxIT" />
       </a>
       <p>
-        Criado durante a
-        {' '}
-        <a href="https://www.alura.com.br/">
-          Imersão React da Alura
-        </a>
+        Criado com muito ❤️ 
       </p>
     </FooterBase>
   );
