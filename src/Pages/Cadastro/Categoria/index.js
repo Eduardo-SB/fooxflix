@@ -41,7 +41,7 @@ export default function Video() {
   }
 
   useEffect(() => {
-    const URL_TOP = 'http://localhost:8080/categorias';
+    const URL_TOP = 'https://fooxflix.herokuapp.com/categorias';
 
     fetch(URL_TOP).then(async (res) => {
       const response = await res.json();
