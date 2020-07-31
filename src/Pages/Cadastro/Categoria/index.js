@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
@@ -39,6 +39,40 @@ export default function Video() {
       event.target.value,
     );
   }
+
+  useEffect(() => {
+    const URL_TOP = 'http://localhost:8080/categorias';
+
+    fetch(URL_TOP).then(async (res) => {
+      const response = await res.json();
+      setCategory([
+        ...response,
+      ]);
+    });
+    // setTimeout(() => {
+    //   setCategory([
+    //     ...category,
+    //     {
+    //       id: 1,
+    //       nome: 'Front End',
+    //       color: '#6BD1FF',
+    //       link_extra: {
+    //         text: 'Formação de Front End na Alura',
+    //         url: 'https://www.alura.com.br/cursos-online-front-end',
+    //       },
+    //     },
+    //     {
+    //       id: 2,
+    //       name: 'Back End',
+    //       color: '#00C86F',
+    //       link_extra: {
+    //         text: 'Cursos de Back End na Alura',
+    //         url: 'https://www.alura.com.br/cursos-online-programacao',
+    //       },
+    //     },
+    //   ]);
+    // }, 4 * 1000);
+  }, []);
 
   return (
     <>
@@ -93,7 +127,7 @@ export default function Video() {
 
           <div>
             <FormField
-              label="Cor"
+              label="color"
               type="color"
               name="color"
               value={values.color}
@@ -102,7 +136,7 @@ export default function Video() {
           </div>
           {/* <div>
             <label>
-              Cor:
+              color:
               <input
                 type="color"
                 name="color"
@@ -112,15 +146,21 @@ export default function Video() {
             </label>
           </div> */}
 
-          <Button>
+          <Button to="\">
             Cadastrar
           </Button>
         </form>
 
+        {category.length === 0 && (
+          <div>
+            Loading...
+          </div>
+        )}
+
         <ul>
           {category.map((categoryName) => (
-            <li key={`${categoryName}`}>
-              {category.name}
+            <li key={`${categoryName.name}`}>
+              {categoryName.name}
             </li>
           ))}
         </ul>
