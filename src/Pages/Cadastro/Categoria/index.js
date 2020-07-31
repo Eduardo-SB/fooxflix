@@ -3,50 +3,54 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
+import Button from '../../../components/Button';
 
-export default function Video(){
+export default function Video() {
   const initialValues = {
-    name: "",
-    description: "",
-    color: "#000000"
+    name: '',
+    description: '',
+    color: '#000000',
   };
 
   const [category, setCategory] = useState([]);
   const [values, setValues] = useState(initialValues);
 
-  function handleSubmit(event){
+  function handleSubmit(event) {
     event.preventDefault();
 
     setCategory([
       ...category,
-      values
+      values,
     ]);
 
     setValues(initialValues);
   }
 
-  function setValue(key, value){
+  function setValue(key, value) {
     setValues({
       ...values,
-      [key]: value
-    })
+      [key]: value,
+    });
   }
 
-  function handleChangeInput(event){
+  function handleChangeInput(event) {
     setValue(
       event.target.getAttribute('name'),
-      event.target.value
+      event.target.value,
     );
   }
 
   return (
     <>
       <PageDefault>
-        <h1>Cadastro de Categoria: {values.name}</h1>
-        
-        <form style={{ background: values.color }} onSubmit={handleSubmit}>
+        <h1>
+          Cadastro de Categoria:
+          {values.name}
+        </h1>
+
+        <form onSubmit={handleSubmit}>
           <div>
-            <FormField 
+            <FormField
               label="Nome da Categoria"
               type="text"
               name="name"
@@ -65,7 +69,7 @@ export default function Video(){
                 />
             </label>
           </div> */}
-          
+
           <div>
             <FormField
               label="Descrição"
@@ -108,18 +112,17 @@ export default function Video(){
             </label>
           </div> */}
 
-          <button>
+          <Button>
             Cadastrar
-          </button>
+          </Button>
         </form>
 
         <ul>
-          {category.map((category, index) => (
-              <li key={`${category}${index}`}>
-                {category.name}
-              </li>
-            )
-          )}
+          {category.map((categoryName) => (
+            <li key={`${categoryName}`}>
+              {category.name}
+            </li>
+          ))}
         </ul>
 
         <Link to="/">

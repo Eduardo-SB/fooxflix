@@ -13,13 +13,13 @@ const Main = Styled.main`
   padding-right: 5%;
 `;
 
-export default function PageDefault({ children }){
-  return(
+export default function PageDefault({ children }) {
+  return (
     <>
       <Menu />
-        <Main>
-          {children}
-        </Main>
+      <Main>
+        {children}
+      </Main>
       <Footer />
     </>
   );
